@@ -6,9 +6,9 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     db.select('*')
-    .from('accounts')
-    .then((accounts) => res.status(200).json(accounts))
-    .catch(err => console.log(err))
+        .from('accounts')
+        .then((accounts) => res.status(200).json(accounts))
+        .catch(err => console.log(err))
 });
 
 router.get('/:id', (req, res) => {
