@@ -25,7 +25,12 @@ router.post('/', (req, res) => {
     const accountData = req.body
     db('accounts')
         .insert(accountData)
-        .then( id => res.status(201).json({ data: id[0]}))
+        .then(id => 
+            db('accounts')
+            .where("id", id[0])
+            .then(account =>
+                res.status(200).json(account[0]))
+            )
         .catch(err => console.log(err))
 });
 
